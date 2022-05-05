@@ -56,9 +56,9 @@ app.post('/store', upload.single('image'), (req, response) => {
   const timestamp = new Date();
   const client = (typeof req.headers['x-forwarded-for'] === 'string'
         && req.headers['x-forwarded-for'].split(',').shift())
-        || req.connection.remoteAddress
-        || req.socket.remoteAddress
-        || req.connection.socket.remoteAddress;
+        || req.connection?.remoteAddress
+        || req.socket?.remoteAddress
+        || req.connection?.socket?.remoteAddress;
   const { score } = req.body;
   const { image_index: imageIndex } = req.body;
   const { mode } = req.body;
